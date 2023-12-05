@@ -58,7 +58,11 @@ def command(c):
           if c[-2] != "from": print("Error! This command must follow this syntax:\nremove <value> from <array>")
           else:
             if c[-1] not in DICT.keys(): print("Error! This array doesn't exist!")
-            else: DICT[c[-1]].pop(DICT[c[-1]].index(" ".join(c[1:-2])))
+            else:
+                if " ".join(c[1:-2]) in DICT[c[-1]]:
+                    DICT[c[-1]].pop(DICT[c[-1]].index(" ".join(c[1:-2])))
+                else:
+                    print("Value is not present in the array.")
 
     if c[0] == "pop":
       if len(c) != 3: print("Error! This command must follow this syntax:\npop <array> <index>")
@@ -71,10 +75,14 @@ def command(c):
                 print("Index must be a number. Make sure it's lower than\nyour array's total length.")
 
     if c[0] == "index":
-        if len(c) < 3: print("Error! This command must follow this syntax:\nindex <value> <array>")
+        if len(c) != 3: print("Error! This command must follow this syntax:\nindex <value> <array>")
         else:
             if c[-1] not in DICT.keys(): print("Error! This array doesn't exist!")
-            else: print(DICT[c[-1]].index(" ".join(c[1:-1])))
+            else:
+                if " ".join(c[1:-1]) in DICT[c[-1]]:
+                    print(DICT[c[-1]].index(" ".join(c[1:-1])))
+                else:
+                    print("Value is not present in the array.")
             
 
     if c[0] in ["len", "length"]:
