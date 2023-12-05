@@ -290,7 +290,7 @@ help t1
 """)
             elif c[1] == "t1":
                 print("""TUTORIAL: MANAGING ARRAYS
-To access the previous tutorial, use ```help tutorial```.
+To access the previous tutorial, use `help tutorial`.
 
 --- WHAT ARE ARRAYS ---
 lol
