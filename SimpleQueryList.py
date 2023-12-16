@@ -12,7 +12,7 @@ def command(c):
     c = c.split();
     match c[0]:
         case "termin"|"terminate"|"endprogram"|"shutdown": RUNNING = false;
-    
+
         case "view"|"show"|"print":
             if len(c) != 2: print("Error! This command takes exactly 1 parameter!")
             else:
@@ -20,7 +20,7 @@ def command(c):
                     print(DICT[c[1]])
                 else:
                     print("Error!", c[1], "doesn't exist!")
-                
+
         case "create":
             if len(c) != 2: print("Error! This command takes exactly 1 parameter!")
             else:
@@ -33,7 +33,7 @@ def command(c):
                         DICT[c[1]] = []
                     else:
                         print("Cancelled.")
-                    
+
         case "add":
             if len(c) < 4: print("Error! This command must follow this syntax:\nadd <value> to <array>")
             else:
@@ -41,8 +41,8 @@ def command(c):
                 else:
                     if c[-1] not in DICT.keys(): print("Error! This array doesn't exist!")
                     else: DICT[c[-1]].append(" ".join(c[1:-2]))
-            
-        if c[0] in ["del", "delete"]:
+
+        case "del" | "delete":
             if len(c) != 2: print("Error! This command takes exactly 1 parameter!")
             else:
                 if c[1] in DICT.keys():
@@ -52,7 +52,7 @@ def command(c):
                   else: print("Cancelled")
                 else:
                   print("Error! There is no such array!")
-              
+
         case "remove":
           if len(c) < 4: print("Error! This command must follow this syntax:\nremove <value> from <array>")
           else:
@@ -84,7 +84,7 @@ def command(c):
                         print(DICT[c[-1]].index(" ".join(c[1:-1])))
                     else:
                         print("Value is not present in the array.")
-            
+
 
         case "len"|"length":
             if len(c) != 2: print("Error! This command takes exactly 1 parameter!")
@@ -92,7 +92,7 @@ def command(c):
                 if c[1] not in DICT.keys(): print("Error! This array doesn't exist!")
                 else:
                     print(c[1]+":LENGTH =", len(DICT[c[1]]))
-        
+
         case "ws"|"workspace"|"cw"|"changews"|"changeworkpace":
             if len(c) != 2: print("Error! This command takes exactly 1 parameter!")
             else:
@@ -102,7 +102,7 @@ def command(c):
                     STORAGE[c[1]] = {}
                     CDICT = c[1]
                 print("Changed workspace to", c[1] + ".")
-            
+
         case "save":
             if len(c) != 4 or c[2] != "as":
                 print("Error! This command must follow this syntax:\nsave <workspace> as <file>")
@@ -185,7 +185,7 @@ Do you wish to procceed? Y/N")
                                         print("Cancelled.")
                                 else: print("Error. You do not have permissions to read this file.")
                 else: print("Error! This file doesn't exist.")     
-            
+
         case "info":
             if len(c) > 2: print("Error! This comand takes 1 parameter at most!")
             else:
@@ -196,13 +196,14 @@ Do you wish to procceed? Y/N")
                         print(c[1], STORAGE[c[1]])
                     else:
                         print("Workspace", c[1], "doesn't exist.")
-                    
-        case "list": print("; ".join(list(STORAGE.keys())))
 
-
-        '''
-        ONLY HELP UNDER THIS LINE!!!
-        '''
+        case "list":
+        	print("; ".join(list(STORAGE.keys())))
+		
+		
+        	"""
+       	 ONLY HELP UNDER THIS LINE!!!
+     	   """
         case "help":
             if len(c) != 2: print("Error! This command takes exactly 1 parameter!")
             else:
@@ -299,7 +300,7 @@ lol
 """)
                     case _: print("This is a help message!")
         case _: print("This command doesn't exist.")
-            
+
 
 
 #DEF:MAIN
