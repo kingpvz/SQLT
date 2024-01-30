@@ -142,7 +142,7 @@ Input your command: ").strip().lower()
                                 if f.readable():
                                     r = f.readlines()
                                     if r[0].strip() != VERSIONCHECK:
-                                        print("Warning. The version of your file does not correspond with your SQLt language version.\n\
+                                        print("Warning. The version of your file does not correspond with your SQLT language version.\n\
 Do you wish to procceed? Y/N")
                                         lt = input().upper().strip()
                                         if lt=="Y": braket = true
@@ -210,7 +210,7 @@ Do you wish to procceed? Y/N")
                 match c[1]:
                     case "termin"|"terminate"|"endprogram"|"shutdown": print("This command terminates the terminal. Possible aliases: termin, terminate, endprogram, shutdown.")
                     case "save" : print("This command saves a workspace to a file. Syntax: save <workspace> as <file>\n\
-File must be either full path (C:\\Users\\User\\myworkspace), partial path (\\myfolder\\myorkspace)\n\
+File must be either full path (C:\\Users\\User\\myworkspace), partial path (\\myfolder\\myworkspace)\n\
 or just the file name (myworkspace). It will be saved as a .sqlt file.")
                     case "load" : print("This command loads a workspace from a file. Syntax: load <file> as <workspace>\n\
 File must be either full path (C:\\Users\\User\\myworkspace), partial path (\\myfolder\\myorkspace)\n\
